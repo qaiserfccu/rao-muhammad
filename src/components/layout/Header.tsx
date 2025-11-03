@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,36 +17,58 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+    <header className="fixed w-full bg-gradient-to-r from-indigo-500/90 via-purple-500/90 to-pink-500/90 backdrop-blur-sm shadow-lg z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-gray-800">
+          <Link href="/" className="text-2xl font-bold text-white hover:text-purple-100 transition-colors">
             Portfolio
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-white/90 hover:text-white font-medium transition-all hover:scale-105 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-white after:transition-all"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="flex items-center space-x-4 ml-4 border-l border-white/20 pl-4">
+              <a
+                href="https://www.github.com/qaiserfcc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/90 hover:text-white transition-all hover:scale-110"
+                aria-label="GitHub Profile"
               >
-                {item.name}
-              </Link>
-            ))}
+                <FaGithub className="w-6 h-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/qaiserfcc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/90 hover:text-white transition-all hover:scale-110"
+                aria-label="LinkedIn Profile"
+              >
+                <FaLinkedin className="w-6 h-6" />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <HiX className="w-6 h-6 text-gray-600" />
+              <HiX className="w-6 h-6 text-white" />
             ) : (
-              <HiMenu className="w-6 h-6 text-gray-600" />
+              <HiMenu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
@@ -56,19 +79,40 @@ const Header = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden"
+            transition={{ duration: 0.2 }}
+            className="md:hidden mt-4"
           >
-            <div className="py-2 space-y-2">
+            <div className="py-2 space-y-1 bg-white/10 backdrop-blur-md rounded-lg">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
+                  className="block px-4 py-3 text-white/90 hover:text-white hover:bg-white/20 transition-colors rounded-md"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
+              <div className="flex items-center space-x-6 px-4 py-3 border-t border-white/10 mt-2">
+                <a
+                  href="https://www.github.com/qaiserfcc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/90 hover:text-white transition-all hover:scale-110"
+                  aria-label="GitHub Profile"
+                >
+                  <FaGithub className="w-6 h-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/qaiserfcc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/90 hover:text-white transition-all hover:scale-110"
+                  aria-label="LinkedIn Profile"
+                >
+                  <FaLinkedin className="w-6 h-6" />
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

@@ -263,8 +263,10 @@ export default function Home() {
       </Section>
 
       {/* Statistics Section */}
-      <Section delay={0.6} className="bg-gradient-to-br from-gray-900 to-indigo-900 dark:from-gray-950 dark:to-indigo-950 text-white py-16">
-        <Container>
+      <Section delay={0.6} className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/grid.png')] bg-center [mask-image:radial-gradient(white,transparent_70%)] pointer-events-none opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-pink-500/30"></div>
+        <Container className="relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -273,12 +275,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="text-center backdrop-blur-sm p-6 rounded-xl border border-white/10"
+                className="text-center backdrop-blur-sm p-8 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 border border-white/20 transition-all transform hover:scale-105 shadow-xl"
               >
-                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 dark:from-indigo-300 dark:to-purple-300 bg-clip-text text-transparent mb-2">
+                <div className="text-5xl md:text-6xl font-bold bg-gradient-to-br from-white to-purple-200 bg-clip-text text-transparent mb-3">
                   {stat.number}
                 </div>
-                <div className="text-lg text-gray-200 dark:text-gray-300">{stat.label}</div>
+                <div className="text-lg text-white/90 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>

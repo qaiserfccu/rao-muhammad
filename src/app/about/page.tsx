@@ -52,16 +52,16 @@ export default function About() {
 
   return (
     <>
-      <Section className="bg-gradient-to-b from-white to-gray-50">
+      <Section className="bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 dark:from-blue-950 dark:via-indigo-950/30 dark:to-purple-950/50">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">About Me</h1>
-            <p className="text-lg text-gray-600 mb-8">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6">About Me</h1>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
               Based in Riyadh, SA, I'm a seasoned Full Stack Developer with extensive experience in designing and implementing scalable software solutions across multiple industries, including government and tourism. Proficient in backend development, microservices architecture, RESTful API design, and frontend frameworks such as ReactJS and AngularJS. I hold a Bachelor's degree in Computer Science from Forman Christian College University.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h2 className="text-2xl font-semibold mb-4">Skills</h2>
+                <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Skills</h2>
                 <div className="space-y-2">
                   {[
                     'Backend Development (.NET, Node.js)',
@@ -72,10 +72,10 @@ export default function About() {
                     'Cloud (AWS/Azure)',
                     'Database Design',
                     'DevOps & CI/CD'
-                  ].map((skill) => (
+                  ].map((skill, index) => (
                     <div
                       key={skill}
-                      className="bg-white p-3 rounded-lg shadow-sm border border-gray-100"
+                      className="bg-white/80 dark:bg-gray-800/50 p-3 rounded-lg shadow-md hover:shadow-xl transition-all border border-blue-100/20 dark:border-blue-700/20 backdrop-blur-sm hover:scale-105 transform cursor-pointer"
                     >
                       {skill}
                     </div>
@@ -83,8 +83,8 @@ export default function About() {
                 </div>
               </div>
               <div>
-                <h2 className="text-2xl font-semibold mb-4">Interests</h2>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Interests</h2>
+                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
                   <li>Web Development</li>
                   <li>Cloud Architecture</li>
                   <li>UI/UX Design</li>
@@ -97,17 +97,20 @@ export default function About() {
         </Container>
       </Section>
 
-      <Section delay={0.2}>
+      <Section delay={0.2} className="bg-gradient-to-br from-purple-50/50 via-indigo-50/30 to-blue-50/50 dark:from-purple-950 dark:via-indigo-950/30 dark:to-blue-950/50">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Experience</h2>
+            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">Experience</h2>
             <div className="space-y-8">
-              {experiences.map((exp) => (
-                <div key={exp.company} className="border-l-4 border-blue-600 pl-4">
-                  <div className="text-sm text-gray-500">{exp.year}</div>
-                  <h3 className="text-xl font-semibold">{exp.role}</h3>
-                  <div className="text-blue-600">{exp.company}</div>
-                  <p className="mt-2 text-gray-600">{exp.description}</p>
+              {experiences.map((exp, index) => (
+                <div 
+                  key={exp.company} 
+                  className="relative pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-gradient-to-b before:from-purple-600 before:to-blue-600 before:dark:from-purple-400 before:dark:to-blue-400 before:rounded-full"
+                >
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{exp.year}</div>
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{exp.role}</h3>
+                  <div className="bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent font-medium">{exp.company}</div>
+                  <p className="mt-2 text-gray-700 dark:text-gray-300">{exp.description}</p>
                 </div>
               ))}
             </div>
@@ -115,17 +118,20 @@ export default function About() {
         </Container>
       </Section>
 
-      <Section delay={0.4}>
+      <Section delay={0.4} className="bg-gradient-to-br from-emerald-50/50 via-teal-50/30 to-cyan-50/50 dark:from-emerald-950 dark:via-teal-950/30 dark:to-cyan-950/50">
         <Container>
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Education</h2>
+            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent">Education</h2>
             <div className="space-y-8">
               {education.map((edu) => (
-                <div key={edu.degree} className="border-l-4 border-green-600 pl-4">
-                  <div className="text-sm text-gray-500">{edu.year}</div>
-                  <h3 className="text-xl font-semibold">{edu.degree}</h3>
-                  <div className="text-green-600">{edu.school}</div>
-                  <p className="mt-2 text-gray-600">{edu.description}</p>
+                <div 
+                  key={edu.degree} 
+                  className="relative pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-gradient-to-b before:from-emerald-600 before:to-cyan-600 before:dark:from-emerald-400 before:dark:to-cyan-400 before:rounded-full"
+                >
+                  <div className="text-sm text-gray-500 dark:text-gray-400">{edu.year}</div>
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{edu.degree}</h3>
+                  <div className="bg-gradient-to-r from-emerald-600 to-cyan-600 dark:from-emerald-400 dark:to-cyan-400 bg-clip-text text-transparent font-medium">{edu.school}</div>
+                  <p className="mt-2 text-gray-700 dark:text-gray-300">{edu.description}</p>
                 </div>
               ))}
             </div>

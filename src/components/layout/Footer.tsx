@@ -1,6 +1,6 @@
 'use client';
 
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -37,28 +37,20 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4">Connect</h3>
             <div className="flex space-x-4">
               <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                href="https://www.github.com/qaiserfcc"
+                className="text-gray-400 hover:text-white transition-all hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaGithub className="w-6 h-6" />
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
+                href="https://www.linkedin.com/in/qaiserfcc"
+                className="text-gray-400 hover:text-white transition-all hover:scale-110"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaLinkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTwitter className="w-6 h-6" />
               </a>
             </div>
           </div>
