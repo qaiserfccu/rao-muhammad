@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaUserTie, FaChalkboardTeacher, FaUserMd, FaLaptopCode, FaFemale, FaPrescription } from 'react-icons/fa';
 
-export default function Home() {
+export default function FamilyDashboard() {
   const familyMembers = [
     {
       name: 'Rao Muhammad Afzal Nadeem',
