@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import "./globals.css";
-import Layout from '@/components/layout/Layout';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
 });
 
 export const metadata: Metadata = {
@@ -26,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-sky-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-sky-900/20`}
+        className={`${inter.variable} ${jetBrainsMono.variable} antialiased min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-sky-50 dark:from-slate-900 dark:via-purple-900/20 dark:to-sky-900/20`}
       >
         <div className="fixed inset-0 bg-[url('/images/grid.png')] bg-center [mask-image:radial-gradient(white,transparent_85%)] pointer-events-none"></div>
-        <Layout>{children}</Layout>
+        {children}
       </body>
     </html>
   );

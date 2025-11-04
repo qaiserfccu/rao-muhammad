@@ -14,7 +14,6 @@ export default function PersonalLayout({
       <main className="min-h-screen pt-16">
         {children}
       </main>
-      <Footer />
     </>
   );
 }

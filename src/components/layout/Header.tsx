@@ -10,7 +10,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', href: '/personal/about' },
+    { name: 'Dashboard', href: '/' },
     { name: 'Family', href: '/family' },
     { name: 'Gallery', href: '/family/gallery' },
     { name: 'Timeline', href: '/family/timeline' },
