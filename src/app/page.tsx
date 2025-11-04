@@ -27,7 +27,7 @@ export default function Home() {
     {
       title: 'Software Engineer',
       description: 'Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality solutions.',
-      date: '2015 - 2018',
+      date: '2013 - 2018',
       tags: ['JavaScript', 'Python', 'MySQL', 'REST APIs'],
       image: '/images/project3.jpg'
     }
