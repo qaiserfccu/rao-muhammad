@@ -6,42 +6,25 @@ import { motion } from 'framer-motion';
 import { HiMenu, HiX } from 'react-icons/hi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-const Header = () => {
+const PersonalHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: 'Dashboard', href: '/' },
-    { name: 'Family', href: '/family' },
-    { name: 'Gallery', href: '/family/gallery' },
-    { name: 'Timeline', href: '/family/timeline' },
-    { name: 'Tree', href: '/family/tree' },
+    { name: 'Home', href: '/personal' },
+    { name: 'About', href: '/personal/about' },
+    { name: 'Portfolio', href: '/personal/portfolio' },
+    { name: 'Skills', href: '/personal/about#skills' },
+    { name: 'Experience', href: '/personal/about#experience' },
+    { name: 'Contact', href: '/personal/contact' },
   ];
 
   return (
-    <header className="fixed w-full bg-gradient-to-r from-indigo-500/90 via-purple-500/90 to-pink-500/90 backdrop-blur-sm shadow-lg z-50">
+    <header className="fixed w-full bg-gradient-to-r from-indigo-600/90 via-purple-600/90 to-blue-600/90 backdrop-blur-sm shadow-lg z-50">
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-white hover:text-purple-100 transition-colors">
-            Rao's Family
+            Back to Family
           </Link>
-
-          {/* Qaiser's Profile Link */}
-          <div className="hidden md:block relative group">
-            <button className="text-white/90 hover:text-white font-medium transition-all hover:scale-105 px-4 py-2 rounded-lg hover:bg-white/10">
-              Rao Muhammad Qaiser Nadeem
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white/95 dark:bg-gray-800/95 rounded-lg shadow-xl backdrop-blur-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                <Link href="/personal/about" className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700/50 rounded-t-lg">
-                  About Me
-                </Link>
-                <Link href="/personal/portfolio" className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700/50">
-                  Portfolio
-                </Link>
-                <Link href="/personal/contact" className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700/50 rounded-b-lg">
-                  Contact
-                </Link>
-              </div>
-            </button>
-          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
@@ -140,4 +123,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default PersonalHeader;

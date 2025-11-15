@@ -164,7 +164,7 @@ export default function About() {
             </div>
 
             {/* Skills Section */}
-            <div className="mb-12">
+            <div className="mb-12" id="skills">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-8">
                 Technical Expertise
               </h2>
@@ -199,7 +199,7 @@ export default function About() {
               </div>
             </div>
             {/* Experience Section */}
-            <div className="mb-12">
+            <div className="mb-12" id="experience">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-8">
                 Professional Experience
               </h2>

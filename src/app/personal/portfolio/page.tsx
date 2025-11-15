@@ -101,7 +101,7 @@ export default function Portfolio() {
               I'm always open to discussing new projects and opportunities.
             </p>
             <Link
-              href="/contact"
+              href="/personal/contact"
               className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Get in Touch
