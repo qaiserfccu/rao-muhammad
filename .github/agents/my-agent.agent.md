@@ -3,10 +3,8 @@
 # The Copilot CLI can be used for local testing: https://gh.io/customagents/cli
 # To make this agent available, merge this file into the default repository branch.
 # For format details, see: https://gh.io/customagents/config
-
-## Name: rao-profile
-## Description: Expert agent that generates beautiful portfolio websites from Resume/CV data using Next.js, HTML/CSS, and modern UI techniques.
-
+name: rao-profile
+description: Expert agent that generates beautiful portfolio websites from Resume/CV data using Next.js, HTML/CSS, and modern UI techniques.
 # Agent Instructions
 
 Agent Overview
