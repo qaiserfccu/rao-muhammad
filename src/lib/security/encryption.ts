@@ -6,7 +6,7 @@
 import crypto from 'crypto';
 
 const ALGORITHM = 'aes-256-gcm';
-const IV_LENGTH = 12; // For AES-256-GCM, the recommended IV length is 12 bytes (96 bits) per NIST SP 800-38D
+const IV_LENGTH = 16; // For AES-256-GCM, 12 bytes (96 bits) is recommended per NIST SP 800-38D, but 16 bytes also works
 const KEY_LENGTH = 32; // 256 bits
 
 /**
