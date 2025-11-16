@@ -10,6 +10,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyAccessToken } from '@/lib/security/jwt';
 import { encryptFile } from '@/lib/security/encryption';
 import { uploadEncryptedFile } from '@/lib/storage';
+import { Resume } from '@/lib/db/schema';
 
 // Rate limit: 10 uploads per hour
 // TODO: Apply rate limiting middleware
@@ -174,7 +175,7 @@ export async function GET(request: NextRequest) {
     // TODO: Fetch resumes from database
     // const resumes = await db.resumes.findByUserId(userId);
     
-    const resumes = []; // TODO: Return actual resumes
+    const resumes: Resume[] = []; // TODO: Return actual resumes
     
     return NextResponse.json(
       { resumes },

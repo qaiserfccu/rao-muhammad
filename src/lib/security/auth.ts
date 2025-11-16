@@ -4,9 +4,6 @@
  */
 
 import crypto from 'crypto';
-import { promisify } from 'util';
-
-const scrypt = promisify(crypto.scrypt);
 
 // Constants for password hashing
 const SALT_LENGTH = 16;
@@ -24,16 +21,16 @@ const SCRYPT_PARALLELIZATION = 1;
 export async function hashPassword(password: string): Promise<string> {
   const salt = crypto.randomBytes(SALT_LENGTH);
   
-  const derivedKey = (await scrypt(
-    password,
-    salt,
-    KEY_LENGTH,
-    {
+  const derivedKey = await new Promise<Buffer>((resolve, reject) => {
+    crypto.scrypt(password, salt, KEY_LENGTH, {
       N: SCRYPT_COST,
       r: SCRYPT_BLOCK_SIZE,
       p: SCRYPT_PARALLELIZATION,
-    }
-  )) as Buffer;
+    }, (err, derivedKey) => {
+      if (err) reject(err);
+      else resolve(derivedKey);
+    });
+  });
   
   // Store algorithm, cost, salt, and hash together
   return `scrypt$${SCRYPT_COST}$${salt.toString('hex')}$${derivedKey.toString('hex')}`;
@@ -60,16 +57,16 @@ export async function verifyPassword(
     const salt = Buffer.from(parts[2], 'hex');
     const storedHash = parts[3];
     
-    const derivedKey = (await scrypt(
-      password,
-      salt,
-      KEY_LENGTH,
-      {
+    const derivedKey = await new Promise<Buffer>((resolve, reject) => {
+      crypto.scrypt(password, salt, KEY_LENGTH, {
         N: cost,
         r: SCRYPT_BLOCK_SIZE,
         p: SCRYPT_PARALLELIZATION,
-      }
-    )) as Buffer;
+      }, (err, derivedKey) => {
+        if (err) reject(err);
+        else resolve(derivedKey);
+      });
+    });
     
     // Constant-time comparison to prevent timing attacks
     return crypto.timingSafeEqual(

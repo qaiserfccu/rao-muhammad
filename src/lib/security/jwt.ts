@@ -13,6 +13,12 @@ interface JWTPayload {
   [key: string]: unknown;
 }
 
+interface JWTPayloadInput {
+  sub: string; // User ID (subject)
+  email?: string;
+  [key: string]: unknown;
+}
+
 interface JWTHeader {
   alg: string;
   typ: string;
@@ -70,7 +76,7 @@ function base64UrlDecode(data: string): string {
  * @returns JWT token
  */
 export function signJWT(
-  payload: Omit<JWTPayload, 'iat' | 'exp'>,
+  payload: JWTPayloadInput,
   expiresIn: number = 86400 // 24 hours
 ): string {
   const secret = getJWTSecret();
