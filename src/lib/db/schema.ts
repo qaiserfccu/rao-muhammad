@@ -14,6 +14,7 @@ export interface User {
   avatarUrl?: string;
   provider: 'email' | 'github' | 'google'; // OAuth provider
   providerId?: string; // OAuth provider user ID
+  role: 'user' | 'superuser' | 'admin'; // User role for access control
   createdAt: Date;
   updatedAt: Date;
   lastLoginAt?: Date;

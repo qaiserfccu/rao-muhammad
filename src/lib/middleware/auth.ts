@@ -4,7 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyAccessToken } from '@/lib/security/jwt';
+import { verifyAccessToken, getAccessTokenPayload } from '@/lib/security/jwt';
 
 /**
  * Get authenticated user ID from request
@@ -19,6 +19,31 @@ export function getAuthenticatedUserId(request: NextRequest): string | null {
   }
   
   return verifyAccessToken(accessToken);
+}
+
+/**
+ * Get authenticated user data from request (including role)
+ * @param request - Next.js request object
+ * @returns User data if authenticated, null otherwise
+ */
+export function getAuthenticatedUser(request: NextRequest): { id: string; email?: string; role?: string } | null {
+  const accessToken = request.cookies.get('accessToken')?.value;
+  
+  if (!accessToken) {
+    return null;
+  }
+  
+  const payload = getAccessTokenPayload(accessToken);
+  
+  if (!payload) {
+    return null;
+  }
+  
+  return {
+    id: payload.sub,
+    email: payload.email as string | undefined,
+    role: payload.role as string | undefined,
+  };
 }
 
 /**
@@ -45,24 +70,26 @@ export function requireAuth(
 /**
  * Check if user has required role
  * @param request - Next.js request object
- * @param requiredRole - Required role (admin, user, etc.)
+ * @param requiredRole - Required role (admin, superuser, user, etc.)
  * @returns True if user has required role
  */
 export async function hasRole(
   request: NextRequest,
   requiredRole: string
 ): Promise<boolean> {
-  const userId = getAuthenticatedUserId(request);
+  const user = getAuthenticatedUser(request);
   
-  if (!userId) {
+  if (!user) {
     return false;
   }
   
-  // TODO: Fetch user from database and check role
-  // const user = await db.users.findById(userId);
-  // return user?.role === requiredRole || user?.role === 'admin';
+  // Admin has access to everything
+  if (user.role === 'admin') {
+    return true;
+  }
   
-  return false; // Placeholder
+  // Check if user has the required role
+  return user.role === requiredRole;
 }
 
 /**

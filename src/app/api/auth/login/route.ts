@@ -7,7 +7,6 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyPassword } from '@/lib/security/auth';
 import { createAccessToken, createRefreshToken } from '@/lib/security/jwt';
 
 // Rate limit: 5 requests per 15 minutes
@@ -27,6 +26,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: 'Email and password are required' },
         { status: 400 }
+      );
+    }
+    
+    // Check if JWT_SECRET is configured
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact administrator.' },
+        { status: 500 }
       );
     }
     
@@ -73,12 +81,13 @@ export async function POST(request: NextRequest) {
     //   );
     // }
     
-    // For demo purposes
+    // For demo purposes - accept any email/password combination
     const userId = 'demo-user-id'; // TODO: Use actual user ID
     const email = body.email;
+    const role = 'superuser'; // For demo, all users get superuser role
     
     // Generate tokens
-    const accessToken = createAccessToken(userId, email);
+    const accessToken = createAccessToken(userId, email, role);
     const refreshToken = createRefreshToken(userId);
     
     // TODO: Store refresh token in database
