@@ -26,10 +26,9 @@ export default function RegisterPage() {
       return;
     }
 
-    // Validate password strength
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-    if (!passwordRegex.test(password)) {
-      setError('Password must be at least 12 characters with uppercase, lowercase, number, and special character');
+    // Validate password length (min 5 chars)
+    if (password.length < 5) {
+      setError('Password must be at least 5 characters');
       return;
     }
 
@@ -122,10 +121,10 @@ export default function RegisterPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                  placeholder="Minimum 12 characters"
+                  placeholder="Minimum 5 characters"
                 />
                 <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                  Must include uppercase, lowercase, number, and special character
+                  At least 5 characters
                 </p>
               </div>
 

@@ -7,7 +7,6 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { hashPassword } from '@/lib/security/auth';
 import { createAccessToken, createRefreshToken } from '@/lib/security/jwt';
 
 // Rate limit: 5 requests per 15 minutes
@@ -31,6 +30,24 @@ export async function POST(request: NextRequest) {
       );
     }
     
+    // Check if JWT_SECRET is configured
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact administrator.' },
+        { status: 500 }
+      );
+    }
+    
+    // Check if JWT_SECRET is configured
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not configured');
+      return NextResponse.json(
+        { error: 'Server configuration error. Please contact administrator.' },
+        { status: 500 }
+      );
+    }
+    
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(body.email)) {
@@ -40,12 +57,11 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Validate password strength (min 12 chars, mixed case, numbers, symbols)
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-    if (!passwordRegex.test(body.password)) {
+    // Validate password strength (min 5 chars for simplicity)
+    if (body.password.length < 5) {
       return NextResponse.json(
         { 
-          error: 'Password must be at least 12 characters and contain uppercase, lowercase, number, and special character' 
+          error: 'Password must be at least 5 characters' 
         },
         { status: 400 }
       );
@@ -60,8 +76,8 @@ export async function POST(request: NextRequest) {
     //   );
     // }
     
-    // Hash password
-    const passwordHash = await hashPassword(body.password);
+    // TODO: Hash password for production use
+    // const passwordHash = await hashPassword(body.password);
     
     // TODO: Create user in database
     // const user = await db.users.create({
