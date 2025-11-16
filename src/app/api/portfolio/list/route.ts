@@ -8,7 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAccessToken } from '@/lib/security/jwt';
-import { getUserCompletePortfolios } from '../../../../../lib/db/services';
+import { getUserCompletePortfolios } from '@/lib/db/services';
 
 export async function GET(request: NextRequest) {
   try {

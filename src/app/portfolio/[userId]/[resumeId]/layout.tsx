@@ -6,7 +6,7 @@ import {
   findGeneratedPortfolioByResumeId,
   findPortfolioThemeByPortfolioId,
   findUserById,
-} from '../../../../../lib/db/services';
+} from '@/lib/db/services';
 
 interface LayoutProps {
   children: React.ReactNode;

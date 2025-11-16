@@ -4,8 +4,8 @@ import {
   findPortfolioPageByType,
   listUserPortfolioPhotos,
   isValidPageType,
-} from '../../../../../lib/db/services';
-import type { PageType } from '../../../../../lib/db/schema';
+} from '@/lib/db/services';
+import type { PageType } from '@/lib/db/schema';
 
 /**
  * GET /api/portfolio/public

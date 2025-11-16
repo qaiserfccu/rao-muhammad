@@ -15,7 +15,7 @@ import {
   findPortfolioPhotoById,
   deletePortfolioPhoto,
   getUserPhotoCount,
-} from '../../../../../lib/db/services';
+} from '@/lib/db/services';
 
 const ALLOWED_TYPES = [
   'image/jpeg',

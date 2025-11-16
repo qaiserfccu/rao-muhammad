@@ -14,9 +14,9 @@ import {
   listUserPortfolioPhotos,
   findGeneratedPortfolioByResumeId,
   generateCompletePortfolio,
-} from '../../../../../lib/db/services';
-import { generatePortfolioContent, generateGradientTheme } from '../../../../../lib/ai/portfolio-generator';
-import { PageType } from '../../../../../lib/db/schema';
+} from '@/lib/db/services';
+import { generatePortfolioContent, generateGradientTheme } from '@/lib/ai/portfolio-generator';
+import { PageType } from '@/lib/db/schema';
 
 interface GenerateRequest {
   resumeId: string;

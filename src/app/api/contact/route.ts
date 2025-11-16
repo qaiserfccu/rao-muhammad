@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { findUserById } from '../../../../lib/db/services';
+import { findUserById } from '@/lib/db/services';
 
 /**
  * POST /api/contact
