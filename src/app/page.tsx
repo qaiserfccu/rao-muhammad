@@ -23,11 +23,6 @@ export default function Home() {
       path: '/family/mother',
       icon: FaChalkboardTeacher,
       description: 'Educated and inspired generations of students throughout her teaching career.'
-      title: 'Software Engineer',
-      description: 'Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality solutions.',
-      date: '2013 - 2018',
-      tags: ['JavaScript', 'Python', 'MySQL', 'REST APIs'],
-      image: '/images/project3.jpg'
     }
   ];
 
@@ -40,32 +35,11 @@ export default function Home() {
       image: '/images/project1.jpg'
     },
     {
-      name: 'Dr. Faisal Nadeem',
-      role: 'MBBS Doctor - Pulmonologist',
-      path: '/family/faisal',
-      icon: FaUserMd,
-      description: 'Specialized in pulmonology, helping patients with respiratory conditions.'
-    },
-    {
-      name: 'Rao Muhammad Qaiser Nadeem',
-      role: 'Senior Full Stack Developer',
-      path: '/personal/about',
-      icon: FaLaptopCode,
-      description: 'Expert in full-stack development, creating innovative software solutions.'
-    },
-    {
-      name: 'Dr. Memoona Umar',
-      role: 'MBBS Doctor - Gynecologist',
-      path: '/family/memoona',
-      icon: FaFemale,
-      description: "Specialized in gynecology, providing care for women's health."
-    },
-    {
-      name: 'Dr. Hira Nadeem',
-      role: 'Doctor of Pharmacy (Pharm D)',
-      path: '/family/hira',
-      icon: FaPrescription,
-      description: 'Expert in pharmaceutical sciences and medication management.'
+      title: 'Software Engineer',
+      description: 'Built responsive web applications and RESTful APIs. Collaborated with cross-functional teams to deliver high-quality solutions.',
+      date: '2013 - 2018',
+      tags: ['JavaScript', 'Python', 'MySQL', 'REST APIs'],
+      image: '/images/project3.jpg'
     }
   ];
 
