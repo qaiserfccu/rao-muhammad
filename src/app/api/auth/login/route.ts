@@ -76,9 +76,10 @@ export async function POST(request: NextRequest) {
     // For demo purposes
     const userId = 'demo-user-id'; // TODO: Use actual user ID
     const email = body.email;
+    const role = 'superuser'; // For demo, all users get superuser role
     
     // Generate tokens
-    const accessToken = createAccessToken(userId, email);
+    const accessToken = createAccessToken(userId, email, role);
     const refreshToken = createRefreshToken(userId);
     
     // TODO: Store refresh token in database

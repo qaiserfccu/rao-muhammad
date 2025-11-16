@@ -8,6 +8,7 @@ import crypto from 'crypto';
 interface JWTPayload {
   sub: string; // User ID (subject)
   email?: string;
+  role?: string; // User role
   iat: number; // Issued at
   exp: number; // Expiration time
   [key: string]: unknown;
@@ -16,6 +17,7 @@ interface JWTPayload {
 interface JWTPayloadInput {
   sub: string; // User ID (subject)
   email?: string;
+  role?: string; // User role
   [key: string]: unknown;
 }
 
@@ -175,11 +177,12 @@ export function decodeJWT(token: string): JWTPayload | null {
  * Create a session token (short-lived access token)
  * @param userId - User ID
  * @param email - User email
+ * @param role - User role (optional)
  * @returns Access token
  */
-export function createAccessToken(userId: string, email: string): string {
+export function createAccessToken(userId: string, email: string, role?: string): string {
   return signJWT(
-    { sub: userId, email, type: 'access' },
+    { sub: userId, email, role, type: 'access' },
     3600 // 1 hour
   );
 }
@@ -209,6 +212,21 @@ export function verifyAccessToken(token: string): string | null {
   }
   
   return payload.sub;
+}
+
+/**
+ * Get full access token payload
+ * @param token - Access token
+ * @returns Payload if valid, null otherwise
+ */
+export function getAccessTokenPayload(token: string): JWTPayload | null {
+  const payload = verifyJWT(token);
+  
+  if (!payload || payload.type !== 'access') {
+    return null;
+  }
+  
+  return payload;
 }
 
 /**
