@@ -4,7 +4,7 @@
  */
 
 import { initializeDatabase } from './init';
-import { createUser, createResume, createPortfolioPhoto } from '../services';
+import { createUser, createResume, createPortfolioPhoto } from './services';
 
 export async function seedDatabase() {
   try {
