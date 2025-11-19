@@ -10,6 +10,14 @@ export async function seedDatabase() {
   try {
     console.log('🌱 Starting database seeding...');
 
+    // Check if we have a real database connection
+    const dbUrl = process.env.DB_URL;
+    if (!dbUrl) {
+      console.log('⚠️  DB_URL not configured. Skipping seed - mock database cannot store data.');
+      console.log('ℹ️  To seed a real database, configure DB_URL in your .env file.');
+      return;
+    }
+
     // Initialize database first
     const initialized = await initializeDatabase();
     if (!initialized) {
