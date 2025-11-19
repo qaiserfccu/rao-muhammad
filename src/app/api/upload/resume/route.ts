@@ -9,7 +9,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAccessToken } from '@/lib/security/jwt';
 import { uploadFileLocally } from '@/lib/storage/local';
-import { Resume } from '@/lib/db/schema';
 import { canUploadMoreResumes, createResume, listUserResumes, findUserById } from '@/lib/db/services';
 
 // Rate limit: 10 uploads per hour
