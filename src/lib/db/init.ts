@@ -142,3 +142,10 @@ export async function dropAllTables() {
     return false;
   }
 }
+
+// Run initialization if called directly
+if (require.main === module) {
+  initializeDatabase().then((success) => {
+    process.exit(success ? 0 : 1);
+  });
+}
